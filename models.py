@@ -19,5 +19,5 @@ class SuspiciousIP(Base):
 
     id = Column(Integer, primary_key=True, index=True)
     ip_address = Column(String)
-    report_count = Column(Integer, server_default='0')
+    report_count = Column(Integer, default=1)
     last_reported = Column(TIMESTAMP, default=datetime.now, onupdate=datetime.now)
