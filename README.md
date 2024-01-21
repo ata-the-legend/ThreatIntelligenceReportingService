@@ -11,6 +11,8 @@ Before running this project, make sure you have the following prerequisites inst
 
 ## Getting Started
 
+#### Dockerized Version
+
 Follow the steps below to get the threat intelligence service up and running:
 
 1. Clone the repository:
@@ -18,51 +20,28 @@ Follow the steps below to get the threat intelligence service up and running:
     ```
     git clone https://github.com/ata-the-legend/ThreatIntelligenceReportingService.git
     ```
+2. Change into the project directory:
 
-2. Create a virtual environment (optional but recommended):
-    ```
-    cd threat-intelligence-service
-    python3 -m venv venv
-    source .venv/bin/activate
-    ```
-3. Install the dependencies:
-    ```
-    pip install -r requirements.txt
-    ```
-4. Set up the PostgreSQL database:
-   
-- Create a new database in PostgreSQL.
-    ```
-    CREATE DATABASE ThreatIntel;
-    ```
-
-- Update the database configuration in `database.py` and `alembic.ini` file with your database details.
-    ```
-    postgresql://username:password@127.0.0.1:5432/ThreatIntel
-    ```
-
-5. Run database migrations to initialize the tables:
-    ```
-    alembic upgrade head
-    ```
-6. Generate a secret key for JWT authentication:
-
-- In the terminal, run the following command:
+   ```
+   cd ThreatIntelligenceReportingService
+3. Start the project with docker:
 
     ```
-    python -c "import secrets; print(secrets.token_urlsafe())"
-    ```
-    Copy the generated secret key.
-7. Set the JWT secret key variable:
+    docker compose up
+4. The service is now running locally. You can access the API documentation by visiting http://localhost:8000/docs in your web browser.
 
-    Update SECRET_KEY variable in `config.py` file with your the secret key generated in the previous step.
 
-8. Start the FastAPI server:
-    ```
-    python main.py
-    ```
+#### Non-Dockerized Version
 
-9. The service is now running locally. You can access the API documentation by visiting http://localhost:8000/docs in your web browser.
+If you don't want to use Docker and prefer a non-dockerized setup, you can switch to the `non-dockerized` branch. The README file in the `non-dockerized` branch provides instructions for setting up the project without Docker.
+
+To switch to the `non-dockerized` branch, run the following command:
+```
+git checkout non-dockerized
+```
+Once you're on the `non-dockerized` branch, follow the instructions in the README file to set up the project without Docker.
+
+Please note that the non-dockerized version may have different requirements and instructions compared to the Dockerized version. Make sure to follow the appropriate instructions based on your preferred setup.
 
 ## API Development (FastAPI with JWT Authentication)
 
